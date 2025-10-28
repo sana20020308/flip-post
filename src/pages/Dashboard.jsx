@@ -1,4 +1,17 @@
-import { FiPlus, FiBarChart2, FiTrendingUp, FiUsers, FiClock, FiCalendar, FiCheckCircle, FiAlertCircle, FiDollarSign, FiRefreshCw } from 'react-icons/fi';
+import { 
+  FiPlus, 
+  FiBarChart2, 
+  FiTrendingUp, 
+  FiUsers, 
+  FiClock, 
+  FiCalendar, 
+  FiCheckCircle, 
+  FiAlertCircle, 
+  FiDollarSign, 
+  FiRefreshCw,
+  FiSettings,
+  FiMessageSquare
+} from 'react-icons/fi';
 
 const Dashboard = () => {
   // Stats data
@@ -168,42 +181,73 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Content Grid - You can add more sections here */}
-      <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-3">
-        {/* Recent Activity */}
-        <div className="lg:col-span-2">
-          <div className="p-6 bg-white rounded-lg shadow dark:bg-gray-800">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Recent Activity</h2>
-            <div className="mt-4 space-y-4">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="flex items-start pb-4 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                  <div className="flex-shrink-0 w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                    <FiMessageSquare className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+      {/* Bottom Section */}
+      <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-2">
+        {/* Top Performers */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="p-6 border-b border-gray-100">
+            <h2 className="text-lg font-semibold text-gray-900">Top Performers</h2>
+          </div>
+          <div className="divide-y divide-gray-100">
+            {[1, 2, 3, 4, 5].map((item) => (
+              <div key={item} className="p-4 hover:bg-gray-50">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-medium">
+                    {item}
+                  </div>
+                  <div className="ml-4 flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900">Post Title {item}</p>
+                    <p className="text-sm text-gray-500">1,234 views • 45% engagement</p>
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">New comment on your post</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">2 hours ago</p>
+                    <span className="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">+12%</span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Quick Stats */}
-        <div>
-          <div className="p-6 bg-white rounded-lg shadow dark:bg-gray-800">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Quick Stats</h2>
-            <div className="mt-4 space-y-4">
-              <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Posts This Week</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">24</p>
-                <p className="text-sm text-green-600 dark:text-green-400">+12% from last week</p>
+        {/* Recent Comments */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="p-6 border-b border-gray-100">
+            <h2 className="text-lg font-semibold text-gray-900">Recent Comments</h2>
+          </div>
+          <div className="divide-y divide-gray-100">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="p-4 hover:bg-gray-50">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-medium">
+                    U
+                  </div>
+                  <div className="ml-3 flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium text-gray-900">User {item}</p>
+                      <span className="text-xs text-gray-400">2h ago</span>
+                    </div>
+                    <p className="mt-1 text-sm text-gray-600">Great content! This was really helpful for my project.</p>
+                    <div className="mt-2 flex items-center text-xs text-gray-500">
+                      <span className="flex items-center">
+                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"></path>
+                        </svg>
+                        Reply
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Engagement Rate</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">8.2%</p>
-                <p className="text-sm text-green-600 dark:text-green-400">+2.4% from last week</p>
+            ))}
+          </div>
+          <div className="p-4 bg-gray-50">
+            <div className="flex items-center">
+              <div className="flex-shrink-0 w-8 h-8 bg-gray-200 rounded-full"></div>
+              <div className="ml-3 flex-1">
+                <input
+                  type="text"
+                  placeholder="Write a comment..."
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
               </div>
             </div>
           </div>
@@ -214,3 +258,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
