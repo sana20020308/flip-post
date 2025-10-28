@@ -1,304 +1,336 @@
-import { 
-  FiPlus, 
-  FiBarChart2, 
-  FiTrendingUp, 
-  FiUsers, 
-  FiClock, 
-  FiCalendar, 
-  FiCheckCircle, 
-  FiAlertCircle, 
-  FiDollarSign, 
-  FiRefreshCw,
+import React from 'react';
+import {
+  FiBarChart2,
+  FiCalendar,
+  FiPlus,
+  FiChevronRight,
+  FiTrendingUp,
+  FiUsers,
+  FiClock,
+  FiLayers,
+  FiMenu,
+  FiSearch,
+  FiBell,
+  FiChevronDown,
+  FiGrid,
+  FiFileText,
+  FiPieChart,
+  FiMail,
   FiSettings,
-  FiMessageSquare
+  FiLogOut
 } from 'react-icons/fi';
 
 const Dashboard = () => {
-  // Stats data
-  const stats = [
-    { name: 'Total Posts', value: '1,234', change: '+12%', changeType: 'increase', icon: <FiBarChart2 className="h-5 w-5 text-blue-500" /> },
-    { name: 'Engagement', value: '8.2%', change: '+2.4%', changeType: 'increase', icon: <FiTrendingUp className="h-5 w-5 text-green-500" /> },
-    { name: 'New Followers', value: '156', change: '+24%', changeType: 'increase', icon: <FiUsers className="h-5 w-5 text-purple-500" /> },
-    { name: 'Revenue', value: '$3,845', change: '+8.1%', changeType: 'increase', icon: <FiDollarSign className="h-5 w-5 text-yellow-500" /> },
-  ];
-
-  // Recent activity data
-  const recentActivity = [
-    { id: 1, title: 'New post published', description: 'Your post has been published successfully', time: '2 min ago', status: 'success' },
-    { id: 2, title: 'Scheduled post', description: 'Post scheduled for tomorrow at 9:00 AM', time: '1 hour ago', status: 'info' },
-    { id: 3, title: 'New follower', description: 'You have a new follower', time: '3 hours ago', status: 'success' },
-    { id: 4, title: 'Analytics updated', description: 'Your analytics have been updated', time: '5 hours ago', status: 'info' },
-  ];
-
   return (
-    <div className="space-y-6">
-          {/* Hero - welcome + top cards like screenshot */}
-          <div>
-            <div className="flex items-start justify-between">
-              <div>
-                <h1 className="text-3xl font-extrabold text-gray-900">Welcome back, <span className="text-indigo-600">visual_inspire</span>!</h1>
-                <p className="mt-2 text-sm text-gray-500">Unlimited pinning and scheduling to multiple Pinterest boards at once</p>
+    <div className="flex h-screen bg-gray-50">
+      {/* Sidebar */}
+      <div className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200">
+        <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
+          <h1 className="text-xl font-bold text-gray-800">FlipPost</h1>
+          <button className="text-gray-500 hover:text-gray-700">
+            <FiMenu className="w-5 h-5" />
+          </button>
+        </div>
+        
+        <nav className="flex-1 px-3 py-4 space-y-1">
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg">
+            <FiGrid className="w-5 h-5 mr-3" />
+            Dashboard
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiFileText className="w-5 h-5 mr-3" />
+            Posts
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiBarChart2 className="w-5 h-5 mr-3" />
+            Analytics
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiUsers className="w-5 h-5 mr-3" />
+            Audience
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiPieChart className="w-5 h-5 mr-3" />
+            Insights
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiMail className="w-5 h-5 mr-3" />
+            Messages
+          </a>
+          <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+            <FiSettings className="w-5 h-5 mr-3" />
+            Settings
+          </a>
+        </nav>
+        
+        <div className="p-4 border-t border-gray-200">
+          <div className="flex items-center">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium">
+              JD
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium text-gray-800">John Doe</p>
+              <p className="text-xs text-gray-500">Admin</p>
+            </div>
+            <button className="ml-auto text-gray-400 hover:text-gray-600">
+              <FiLogOut className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Navigation */}
+        <header className="bg-white border-b border-gray-200">
+          <div className="flex items-center justify-between h-16 px-6">
+            <div className="flex items-center">
+              <button className="md:hidden text-gray-500 hover:text-gray-700">
+                <FiMenu className="w-6 h-6" />
+              </button>
+              <div className="relative ml-4 max-w-xs w-full">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FiSearch className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                  placeholder="Search..."
+                />
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <button className="p-1 text-gray-500 hover:text-gray-700 focus:outline-none">
+                <FiBell className="h-6 w-6" />
+              </button>
+              <div className="flex items-center">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium">
+                  JD
+                </div>
+                <span className="ml-2 text-sm font-medium text-gray-700">John</span>
+                <FiChevronDown className="ml-1 w-4 h-4 text-gray-500" />
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          {/* Welcome Section */}
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold text-gray-800">Welcome back, <span className="text-blue-600">John</span>!</h1>
+            <p className="text-gray-500">Here's what's happening with your account today.</p>
+          </div>
+          
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Stats Card 1 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="flex justify-between items-start">
+                <div>
+                  <p className="text-sm font-medium text-gray-500">Total Posts</p>
+                  <p className="text-2xl font-bold mt-1">1,234</p>
+                  <div className="flex items-center mt-2 text-sm text-green-500">
+                    <FiTrendingUp className="mr-1" />
+                    <span>12% from last month</span>
+                  </div>
+                </div>
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <FiBarChart2 className="w-6 h-6 text-blue-600" />
+                </div>
               </div>
             </div>
 
-            {/* Top small stat cards */}
-            <div className="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            {/* Stats Card 2 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-500">Board Lists</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">...</p>
+                  <p className="text-sm font-medium text-gray-500">Engagement</p>
+                  <p className="text-2xl font-bold mt-1">8.2%</p>
+                  <div className="flex items-center mt-2 text-sm text-green-500">
+                    <FiTrendingUp className="mr-1" />
+                    <span>2.3% from last week</span>
+                  </div>
                 </div>
-                <div className="p-3 bg-red-50 text-red-500 rounded-lg">
-                  <FiBarChart2 className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Pins Scheduled</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">...</p>
-                </div>
-                <div className="p-3 bg-purple-50 text-purple-500 rounded-lg">
-                  <FiCalendar className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Draft Pins</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">...</p>
-                </div>
-                <div className="p-3 bg-gray-50 text-gray-600 rounded-lg">
-                  <FiMessageSquare className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Pins Created</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">...</p>
-                </div>
-                <div className="p-3 bg-blue-50 text-blue-500 rounded-lg">
-                  <FiCheckCircle className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Subscription</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">Not yet</p>
-                </div>
-                <div className="p-3 bg-green-50 text-green-500 rounded-lg">
-                  <FiDollarSign className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">More</p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">•••</p>
-                </div>
-                <div className="p-3 bg-gray-50 text-gray-600 rounded-lg">
-                  <FiSettings className="w-6 h-6" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <FiTrendingUp className="w-6 h-6 text-green-600" />
                 </div>
               </div>
             </div>
 
-            {/* Two wide action cards below the small stats */}
-            <div className="grid grid-cols-1 gap-4 mt-6 lg:grid-cols-2">
-              <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            {/* Stats Card 3 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-700">Manage Board Lists</p>
-                  <p className="mt-1 text-sm text-gray-500">Create and organize lists of Pinterest boards</p>
+                  <p className="text-sm font-medium text-gray-500">Followers</p>
+                  <p className="text-2xl font-bold mt-1">5,678</p>
+                  <div className="flex items-center mt-2 text-sm text-green-500">
+                    <FiTrendingUp className="mr-1" />
+                    <span>102 new this week</span>
+                  </div>
                 </div>
-                <div className="p-3 bg-red-50 text-red-500 rounded-lg">
-                  <FiBarChart2 className="w-6 h-6" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <FiUsers className="w-6 h-6 text-purple-600" />
                 </div>
               </div>
+            </div>
 
-              <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+            {/* Stats Card 4 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-700">Create New Pin</p>
-                  <p className="mt-1 text-sm text-gray-500">Upgrade to create pins</p>
+                  <p className="text-sm font-medium text-gray-500">Scheduled</p>
+                  <p className="text-2xl font-bold mt-1">24</p>
+                  <div className="flex items-center mt-2 text-sm text-gray-500">
+                    <FiClock className="mr-1" />
+                    <span>5 pending approval</span>
+                  </div>
                 </div>
-                <div className="p-3 bg-green-50 text-green-500 rounded-lg">
-                  <FiPlus className="w-6 h-6" />
+                <div className="p-3 bg-yellow-50 rounded-lg">
+                  <FiCalendar className="w-6 h-6 text-yellow-600" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-3">
-            {/* Left Column */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Analytics Chart */}
-              <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Analytics Overview</h2>
-                  <div className="flex space-x-2">
-                    <select className="text-sm border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                      <option>This Week</option>
-                      <option>Last Week</option>
-                      <option>This Month</option>
-                      <option>Last Month</option>
-                    </select>
+          {/* Content Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Left Column - Content Calendar */}
+            <div className="lg:col-span-2">
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-lg font-semibold text-gray-800">Content Calendar</h2>
+                  <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">View All</button>
+                </div>
+                
+                {/* Calendar Placeholder */}
+                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="font-medium">October 2023</h3>
+                    <div className="flex space-x-2">
+                      <button className="p-1 rounded hover:bg-gray-100">
+                        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button className="p-1 rounded hover:bg-gray-100">
+                        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Calendar Grid */}
+                  <div className="grid grid-cols-7 gap-1 text-center text-sm">
+                    {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
+                      <div key={index} className="text-gray-500 font-medium py-2">{day}</div>
+                    ))}
+                    
+                    {Array.from({length: 31}).map((_, index) => {
+                      const day = index + 1;
+                      const isToday = day === 28; // Example: highlight the 28th
+                      const hasEvent = [5, 12, 19, 26].includes(day); // Example days with events
+                      
+                      return (
+                        <div 
+                          key={day} 
+                          className={`relative py-2 rounded-full ${isToday ? 'bg-blue-100 text-blue-600 font-medium' : ''} ${hasEvent ? 'after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-blue-500 after:rounded-full' : ''}`}
+                        >
+                          {day}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-                <div className="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
-                  <p className="text-gray-500">Chart will be displayed here</p>
+                
+                {/* Upcoming Posts */}
+                <div>
+                  <h3 className="font-medium text-gray-700 mb-3">Upcoming Posts</h3>
+                  <div className="space-y-3">
+                    {[1, 2, 3].map((item) => (
+                      <div key={item} className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                          <FiLayers className="w-5 h-5" />
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <p className="text-sm font-medium">New Product Launch</p>
+                          <p className="text-xs text-gray-500">Scheduled for Oct 30, 2023</p>
+                        </div>
+                        <button className="text-gray-400 hover:text-gray-600">
+                          <FiChevronRight className="w-5 h-5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Recent Activity */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <div className="p-6 border-b border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900">Recent Activity</h2>
+            </div>
+            
+            {/* Right Column - Quick Actions */}
+            <div>
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h2>
+                <div className="space-y-3">
+                  <button className="w-full flex items-center justify-between p-3 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors">
+                    <div className="flex items-center">
+                      <FiPlus className="w-5 h-5" />
+                      <span className="ml-2 font-medium">Create New Post</span>
+                    </div>
+                    <FiChevronRight className="w-5 h-5" />
+                  </button>
+                  
+                  <button className="w-full flex items-center justify-between p-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors">
+                    <div className="flex items-center">
+                      <FiCalendar className="w-5 h-5" />
+                      <span className="ml-2 font-medium">Schedule Post</span>
+                    </div>
+                    <FiChevronRight className="w-5 h-5" />
+                  </button>
+                  
+                  <button className="w-full flex items-center justify-between p-3 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors">
+                    <div className="flex items-center">
+                      <FiBarChart2 className="w-5 h-5" />
+                      <span className="ml-2 font-medium">View Analytics</span>
+                    </div>
+                    <FiChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
-                <div className="divide-y divide-gray-100">
-                  {recentActivity.map((activity) => (
-                    <div key={activity.id} className="p-4 hover:bg-gray-50">
-                      <div className="flex items-start">
-                        <div className={`flex-shrink-0 mt-1 mr-3 ${activity.status === 'success' ? 'text-green-500' : 'text-blue-500'}`}>
-                          {activity.status === 'success' ? <FiCheckCircle className="w-5 h-5" /> : <FiAlertCircle className="w-5 h-5" />}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900">{activity.title}</p>
-                          <p className="text-sm text-gray-500">{activity.description}</p>
-                          <p className="mt-1 text-xs text-gray-400 flex items-center">
-                            <FiClock className="w-3 h-3 mr-1" />
-                            {activity.time}
-                          </p>
-                        </div>
+              </div>
+              
+              {/* Recent Activity */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-lg font-semibold text-gray-800">Recent Activity</h2>
+                  <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">View All</button>
+                </div>
+                
+                <div className="space-y-4">
+                  {[
+                    { id: 1, title: 'New post published', time: '2 min ago', status: 'success' },
+                    { id: 2, title: 'Post scheduled', time: '1 hour ago', status: 'info' },
+                    { id: 3, title: 'New follower', time: '3 hours ago', status: 'success' },
+                    { id: 4, title: 'Analytics updated', time: '5 hours ago', status: 'info' },
+                  ].map((activity) => (
+                    <div key={activity.id} className="flex items-start">
+                      <div className={`flex-shrink-0 mt-1 w-2 h-2 rounded-full ${
+                        activity.status === 'success' ? 'bg-green-500' : 'bg-blue-500'
+                      }`}></div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-gray-800">{activity.title}</p>
+                        <p className="text-xs text-gray-500">{activity.time}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="p-4 bg-gray-50 text-center">
-                  <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
-                    View all activity
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-6">
-              {/* Quick Actions */}
-              <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-                <h2 className="mb-4 text-lg font-semibold text-gray-900">Quick Actions</h2>
-                <div className="space-y-3">
-                  <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-left text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <FiPlus className="w-5 h-5 mr-3 text-blue-500" />
-                    Create New Post
-                  </button>
-                  <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-left text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <FiBarChart2 className="w-5 h-5 mr-3 text-green-500" />
-                    View Analytics
-                  </button>
-                  <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-left text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <FiUsers className="w-5 h-5 mr-3 text-purple-500" />
-                    Manage Team
-                  </button>
-                  <button className="flex items-center w-full px-4 py-3 text-sm font-medium text-left text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <FiSettings className="w-5 h-5 mr-3 text-yellow-500" />
-                    Settings
-                  </button>
-                </div>
-              </div>
-
-              {/* Recent Updates */}
-              <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-                <h2 className="mb-4 text-lg font-semibold text-gray-900">Recent Updates</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 p-2 mr-3 text-blue-500 bg-blue-50 rounded-lg">
-                      <FiRefreshCw className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">New feature released</p>
-                      <p className="mt-1 text-sm text-gray-500">We've added new analytics tools to help you grow.</p>
-                      <p className="mt-1 text-xs text-gray-400">2 days ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 p-2 mr-3 text-purple-500 bg-purple-50 rounded-lg">
-                      <FiCalendar className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">Scheduled maintenance</p>
-                      <p className="mt-1 text-sm text-gray-500">We'll be performing maintenance on May 15th at 2:00 AM UTC.</p>
-                      <p className="mt-1 text-xs text-gray-400">1 week ago</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-
-          {/* Bottom Section */}
-          <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-2">
-            {/* Top Performers */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="p-6 border-b border-gray-100">
-                <h2 className="text-lg font-semibold text-gray-900">Top Performers</h2>
-              </div>
-              <div className="divide-y divide-gray-100">
-                {[1, 2, 3, 4, 5].map((item) => (
-                  <div key={item} className="p-4 hover:bg-gray-50">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-medium">
-                        {item}
-                      </div>
-                      <div className="ml-4 flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900">Post Title {item}</p>
-                        <p className="text-sm text-gray-500">1,234 views • 45% engagement</p>
-                      </div>
-                      <div className="ml-4">
-                        <span className="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">+12%</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Recent Comments */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="p-6 border-b border-gray-100">
-                <h2 className="text-lg font-semibold text-gray-900">Recent Comments</h2>
-              </div>
-              <div className="divide-y divide-gray-100">
-                {[1, 2, 3].map((item) => (
-                  <div key={item} className="p-4 hover:bg-gray-50">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-medium">
-                        U
-                      </div>
-                      <div className="ml-3 flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm font-medium text-gray-900">User {item}</p>
-                          <span className="text-xs text-gray-400">2h ago</span>
-                        </div>
-                        <p className="mt-1 text-sm text-gray-600">Great content! This was really helpful for my project.</p>
-                        <div className="mt-2 flex items-center text-xs text-gray-500">
-                          <span className="flex items-center">
-                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"></path>
-                            </svg>
-                            Reply
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
 export default Dashboard;
-
